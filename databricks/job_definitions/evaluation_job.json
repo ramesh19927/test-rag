@@ -1,0 +1,16 @@
+{
+  "name": "rag-evaluation",
+  "tasks": [
+    {
+      "task_key": "evaluate",
+      "notebook_task": {
+        "notebook_path": "/Workspace/notebooks/04_rag_evaluation"
+      },
+      "schedule": {
+        "quartz_cron_expression": "0 0 * * * ?",
+        "timezone_id": "UTC"
+      }
+    }
+  ],
+  "format": "MULTI_TASK"
+}
