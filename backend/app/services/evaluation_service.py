@@ -8,6 +8,7 @@ import mlflow
 
 from app.config import get_settings
 from app.models.query import QueryResponse
+from app.databricks import mlflow_tracking
 from app.utils.logging import get_logger
 
 logger = get_logger(__name__)
@@ -18,7 +19,7 @@ class EvaluationService:
 
     def __init__(self) -> None:
         self.settings = get_settings()
-        mlflow.set_experiment(self.settings.experiment_name)
+        mlflow_tracking.configure_experiment()
 
     def evaluate(self, responses: Iterable[QueryResponse]) -> dict[str, float]:
         """Compute basic metrics and log them to MLflow."""

@@ -6,7 +6,7 @@ from typing import Iterable, List
 import mlflow
 
 from app.config import get_settings
-from app.databricks import delta_tables, vector_search
+from app.databricks import delta_tables, mlflow_tracking, vector_search
 from app.models.chunk import Chunk
 from app.utils.logging import get_logger
 
@@ -18,7 +18,7 @@ class EmbeddingService:
 
     def __init__(self) -> None:
         self.settings = get_settings()
-        mlflow.set_experiment(self.settings.experiment_name)
+        mlflow_tracking.configure_experiment()
 
     def embed_chunks(self, chunks: Iterable[Chunk]) -> List[Chunk]:
         """Embed provided chunks and persist embeddings."""
