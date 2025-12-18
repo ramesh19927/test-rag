@@ -5,6 +5,7 @@ import mlflow
 
 from app.config import get_settings
 from app.models.query import QueryRequest, QueryResponse
+from app.databricks import mlflow_tracking
 from app.services.retrieval_service import RetrievalService
 from app.utils.logging import get_logger
 from app.utils.text_utils import format_prompt
@@ -18,7 +19,7 @@ class GenerationService:
     def __init__(self) -> None:
         self.settings = get_settings()
         self.retrieval = RetrievalService()
-        mlflow.set_experiment(self.settings.experiment_name)
+        mlflow_tracking.configure_experiment()
 
     async def generate_response(self, request: QueryRequest) -> QueryResponse:
         """Generate a RAG response and log parameters to MLflow."""
