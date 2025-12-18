@@ -1,0 +1,16 @@
+{
+  "name": "rag-embedding",
+  "tasks": [
+    {
+      "task_key": "embed",
+      "notebook_task": {
+        "notebook_path": "/Workspace/notebooks/02_embedding_pipeline"
+      },
+      "schedule": {
+        "quartz_cron_expression": "0 */6 * * * ?",
+        "timezone_id": "UTC"
+      }
+    }
+  ],
+  "format": "MULTI_TASK"
+}

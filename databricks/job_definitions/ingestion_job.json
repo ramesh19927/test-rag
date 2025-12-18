@@ -1,0 +1,16 @@
+{
+  "name": "rag-ingestion",
+  "tasks": [
+    {
+      "task_key": "ingest",
+      "notebook_task": {
+        "notebook_path": "/Workspace/notebooks/01_data_ingestion"
+      },
+      "schedule": {
+        "quartz_cron_expression": "0 0/30 * * * ?",
+        "timezone_id": "UTC"
+      }
+    }
+  ],
+  "format": "MULTI_TASK"
+}
